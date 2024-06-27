@@ -1,0 +1,111 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url('<?php echo base_url('assets/images/background.jpg'); ?>') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.login-box {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    color: #fff;
+    width: 300px;
+}
+
+.brand-logo {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+.brand-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-control {
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #fff;
+    padding: 10px;
+}
+
+.form-control::placeholder {
+    color: #ccc;
+}
+
+.form-check-label {
+    color: #ccc;
+}
+
+.btn-primary {
+    background-color: #0062cc;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #004bb5;
+}
+
+.forgot-password {
+    color: #ccc;
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* Agregar CSS para posicionar el botón de cerrar sesión */
+.logout-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.logout-button {
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+}
+
+.logout-button:hover {
+    background-color: #d32f2f;
+}
+
+
+
