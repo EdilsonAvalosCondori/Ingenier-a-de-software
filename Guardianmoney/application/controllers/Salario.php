@@ -21,7 +21,8 @@ class Salario extends CI_Controller {
             $this->load->view('salario/ingresar');
         } else {
             $data = array(
-                'salario' => $this->input->post('salario')
+                'salario' => $this->input->post('salario'),
+                'usuario_id' => $this->session->userdata('user_id') // Aseg¨²rate de que el ID del usuario est¨¦ en la sesi¨®n
             );
             $this->Salario_model->insertar_salario($data);
             $this->session->set_flashdata('success', 'Salario ingresado correctamente');
@@ -30,14 +31,14 @@ class Salario extends CI_Controller {
     }
 
     public function presupuesto(){
-        $this->form_validation->set_rules('categoria', 'CategorÃ­a', 'required');
+        $this->form_validation->set_rules('categoria', 'Categor¨ªa', 'required');
         $this->form_validation->set_rules('monto', 'Monto', 'required|numeric');
         
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('salario/presupuesto');
         } else {
             $data = array(
-                'usuario_id' => $this->session->userdata('user_id'), // Asumiendo que tienes el id del usuario en la sesiÃ³n
+                'usuario_id' => $this->session->userdata('user_id'), // Asumiendo que tienes el id del usuario en la sesi¨®n
                 'categoria' => $this->input->post('categoria'),
                 'monto' => $this->input->post('monto'),
                 'fecha' => date('Y-m-d')
@@ -55,7 +56,7 @@ class Salario extends CI_Controller {
             $this->load->view('salario/ahorros');
         } else {
             $data = array(
-                'usuario_id' => $this->session->userdata('user_id'), // Asumiendo que tienes el id del usuario en la sesiÃ³n
+                'usuario_id' => $this->session->userdata('user_id'), // Asumiendo que tienes el id del usuario en la sesi¨®n
                 'monto' => $this->input->post('monto'),
                 'fecha' => date('Y-m-d')
             );
@@ -66,17 +67,19 @@ class Salario extends CI_Controller {
     }
 
     public function revision(){
-        $data['salarios'] = $this->Salario_model->obtener_salarios();
-        $data['presupuestos'] = $this->Salario_model->obtener_presupuestos();
-        $data['ahorros'] = $this->Salario_model->obtener_ahorros();
+        $user_id = $this->session->userdata('user_id'); // Obtener el ID del usuario de la sesi¨®n
+        $data['salarios'] = $this->Salario_model->obtener_salarios($user_id);
+        $data['presupuestos'] = $this->Salario_model->obtener_presupuestos($user_id);
+        $data['ahorros'] = $this->Salario_model->obtener_ahorros($user_id);
         $this->load->view('salario/revision', $data);
     }
 
     public function panel(){
-        $this->load->view('salario/panel'); // AsegÃºrate de que esta vista cargue el panel correcto
+        $this->load->view('salario/panel'); // Aseg¨²rate de que esta vista cargue el panel correcto
     }
 }
 ?>
+
 
 
 
